@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower · Valeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --rose:      #C4728A;
+  --rose-deep: #A0546C;
+  --rose-mid:  #D4849A;
+  --blush:     #F2D4DC;
+  --blush-pale:#FBF0F2;
+  --blush-soft:#F7E5EA;
+  --gold:      #C9A96E;
+  --gold-light:#E8D5B0;
+  --cream:     #FDF8F5;
+  --ivory:     #FFFCFA;
+  --brown:     #2E1A20;
+  --brown-mid: #7A4E5A;
+  --white:     #FFFEF9;
+}
+
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--cream);
+  color:var(--brown);
+  overflow-x:hidden;
+}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(150deg,#FBF0F2 0%,#FDF6F8 50%,#F7E5EA 100%);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:80px 64px 64px;
+  position:relative;overflow:hidden;
+  gap:48px;
+}
+.hero-dots{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(196,114,138,0.12) 1.5px,transparent 1.5px);
+  background-size:32px 32px;opacity:0.6;
+}
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(196,114,138,0.1) 0%,transparent 70%);
+  border-radius:50%;top:50%;right:30%;
+  transform:translate(50%,-50%);pointer-events:none;
+}
+
+/* texto */
+.hero-text{position:relative;z-index:1;}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--rose);font-weight:500;
+  background:rgba(196,114,138,0.1);
+  padding:7px 18px;border-radius:40px;margin-bottom:28px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,4.5vw,58px);
+  font-weight:400;line-height:1.1;
+  color:var(--brown);margin-bottom:8px;
+}
+.hero h1 em{font-style:italic;color:var(--rose);}
+.hero-baby-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,6vw,76px);
+  font-weight:400;font-style:italic;
+  color:var(--rose-mid);
+  line-height:1;margin-bottom:12px;display:block;
+}
+.hero-subtitle{
+  font-size:14px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--brown-mid);font-weight:300;
+  margin-bottom:36px;
+  text-align:center;
+}
+
+/* countdown */
+.countdown{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap;}
+.cd-block{
+  background:var(--white);border-radius:14px;
+  padding:14px 16px;text-align:center;
+  border:1px solid rgba(196,114,138,0.15);min-width:66px;
+  box-shadow:0 2px 12px rgba(196,114,138,0.06);
+}
+.cd-num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:400;
+  color:var(--rose);line-height:1;display:block;
+}
+.cd-label{
+  font-size:9px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--brown-mid);font-weight:500;display:block;margin-top:3px;
+}
+
+.btn-rsvp{
+  background:var(--rose);color:var(--white);
+  padding:15px 34px;border-radius:50px;
+  font-size:14px;font-weight:500;letter-spacing:0.05em;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 6px 20px rgba(196,114,138,0.3);
+}
+.btn-rsvp:hover{
+  background:var(--rose-deep);transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(196,114,138,0.35);
+}
+
+/* foto hero */
+.hero-photo{position:relative;z-index:1;display:flex;justify-content:center;}
+.hero-photo-frame{position:relative;width:100%;max-width:400px;}
+.hero-photo-frame img{
+  width:100%;
+  border-radius:200px 200px 160px 160px;
+  object-fit:cover;aspect-ratio:3/4;display:block;
+  box-shadow:0 24px 80px rgba(160,84,108,0.22);
+}
+.hero-photo-badge{
+  position:absolute;bottom:28px;right:-16px;
+  background:var(--white);border-radius:16px;
+  padding:14px 18px;
+  box-shadow:0 8px 32px rgba(196,114,138,0.15);
+  border:1px solid rgba(196,114,138,0.1);text-align:center;
+}
+.hero-photo-badge .badge-date{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:400;color:var(--rose);display:block;
+}
+.hero-photo-badge .badge-label{
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--brown-mid);display:block;margin-top:2px;
+}
+.hero-photo-ornament{
+  position:absolute;top:-18px;left:-18px;
+  width:72px;height:72px;border-radius:50%;
+  background:var(--gold-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;box-shadow:0 4px 16px rgba(201,169,110,0.2);
+}
+
+/* ─── SECTIONS ─── */
+section{padding:80px 24px;}
+.sec-inner{max-width:840px;margin:0 auto;}
+.sec-tag{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--rose);font-weight:500;
+  display:block;margin-bottom:10px;text-align:center;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,5vw,46px);font-weight:400;
+  line-height:1.1;color:var(--brown);
+  text-align:center;margin-bottom:40px;
+}
+.sec-title em{font-style:italic;color:var(--rose);}
+.rose-divider{
+  display:flex;align-items:center;gap:16px;
+  margin:0 auto 40px;justify-content:center;
+}
+.rose-divider::before,.rose-divider::after{
+  content:'';width:72px;height:1px;
+  background:linear-gradient(to right,transparent,var(--rose-mid),transparent);
+}
+.rose-divider span{color:var(--rose-mid);font-size:14px;}
+
+/* ─── DETALLES ─── */
+#detalles{background:var(--white);}
+.details-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(178px,1fr));
+  gap:16px;
+}
+.detail-card{
+  background:var(--blush-pale);border-radius:20px;
+  padding:28px 20px;text-align:center;
+  border:1px solid rgba(196,114,138,0.12);
+  transition:transform .2s,box-shadow .2s;
+}
+.detail-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(196,114,138,0.1);
+}
+.detail-icon{font-size:26px;margin-bottom:12px;display:block;}
+.detail-label{
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--rose);font-weight:500;margin-bottom:5px;
+}
+.detail-val{
+  font-family:'Playfair Display',serif;
+  font-size:19px;font-weight:400;color:var(--brown);line-height:1.25;
+}
+.detail-note{font-size:12px;color:var(--brown-mid);font-weight:300;margin-top:5px;}
+.btn-map{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:10px;font-size:12px;color:var(--rose-deep);font-weight:500;
+  text-decoration:none;border-bottom:1px solid rgba(160,84,108,0.25);
+  padding-bottom:1px;transition:border-color .2s;
+}
+.btn-map:hover{border-color:var(--rose-deep);}
+
+/* ─── GALERÍA ─── */
+#galeria{background:var(--cream);}
+.photos-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:10px;
+}
+.photo-cell{overflow:hidden;border-radius:16px;background:var(--blush-pale);}
+.photo-cell img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .45s ease;
+}
+.photo-cell:hover img{transform:scale(1.04);}
+.photo-cell.p1{grid-column:1/6;grid-row:1/3;min-height:460px;}
+.photo-cell.p2{grid-column:6/13;grid-row:1;aspect-ratio:16/9;}
+.photo-cell.p3{grid-column:6/10;grid-row:2;}
+.photo-cell.p4{grid-column:10/13;grid-row:2;}
+
+/* ─── DRESS CODE ─── */
+#dresscode{background:var(--white);}
+.dress-wrap{
+  background:var(--blush-pale);border-radius:24px;
+  padding:48px 40px;text-align:center;
+  border:1px solid rgba(196,114,138,0.1);
+}
+.dress-swatches{
+  display:flex;justify-content:center;gap:16px;
+  margin:26px 0 16px;flex-wrap:wrap;
+}
+.swatch-group{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.swatch{
+  width:52px;height:52px;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.85);
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+}
+.swatch-name{font-size:11px;color:var(--brown-mid);text-align:center;max-width:68px;}
+.dress-note{
+  font-size:14px;font-weight:300;color:var(--brown-mid);
+  max-width:440px;margin:0 auto;line-height:1.75;
+}
+
+/* ─── REGALOS ─── */
+#regalos{background:var(--cream);}
+.registry-wrap{
+  background:var(--white);border-radius:24px;overflow:hidden;
+  border:1px solid rgba(196,114,138,0.12);
+}
+.registry-header{
+  background:var(--rose);padding:28px 36px;
+  display:flex;align-items:center;gap:16px;
+}
+.registry-header-icon{font-size:28px;}
+.registry-header h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:400;font-style:italic;color:var(--white);
+}
+.registry-header p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.7);}
+.registry-body{padding:36px;}
+.registry-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.reg-card{
+  background:var(--blush-pale);border-radius:16px;
+  padding:28px 24px;text-align:center;
+  border:1px solid rgba(196,114,138,0.1);
+}
+.reg-icon{font-size:28px;margin-bottom:12px;display:block;}
+.reg-name{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:400;color:var(--rose-deep);margin-bottom:6px;
+}
+.reg-detail{font-size:13px;font-weight:300;color:var(--brown-mid);line-height:1.6;}
+.reg-num{font-size:17px;font-weight:500;color:var(--brown);margin-top:6px;letter-spacing:0.03em;}
+.registry-note{
+  margin-top:20px;
+  font-size:13px;font-weight:300;color:var(--brown-mid);
+  font-style:italic;text-align:center;
+}
+
+/* ─── RSVP ─── */
+#rsvp{
+  background:linear-gradient(135deg,var(--rose-deep) 0%,#8A3D52 100%);
+  text-align:center;
+}
+#rsvp .sec-tag{color:rgba(255,255,255,0.55);}
+#rsvp .sec-title{color:var(--white);}
+#rsvp .sec-title em{color:var(--gold-light);}
+.rsvp-sub{
+  font-size:15px;font-weight:300;color:rgba(255,255,255,0.7);
+  margin-bottom:36px;line-height:1.7;
+}
+.btn-wa{
+  background:var(--white);color:var(--rose-deep);
+  padding:16px 40px;border-radius:50px;
+  font-size:14px;font-weight:500;letter-spacing:0.04em;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:transform .15s,box-shadow .2s;
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,0.2);}
+.btn-wa svg{width:20px;height:20px;fill:var(--rose-deep);}
+.rsvp-deadline{
+  margin-top:16px;font-size:13px;
+  color:rgba(255,255,255,0.45);font-style:italic;
+}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--brown);padding:40px 24px;text-align:center;
+}
+.footer-script{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-style:italic;font-weight:400;
+  color:rgba(255,254,249,0.45);margin-bottom:8px;
+}
+footer span{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,254,249,0.2);display:block;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:88px 24px 48px;
+    text-align:center;
+    gap:36px;
+  }
+  .hero-photo{order:-1;}
+  .hero-photo-frame{max-width:280px;}
+  .hero-photo-badge{right:-8px;bottom:14px;padding:10px 14px;}
+  .hero-subtitle::after{display:none;}
+  .countdown{justify-content:center;}
+  .photos-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .photo-cell.p1{grid-column:1/3;grid-row:auto;min-height:240px;aspect-ratio:16/9;}
+  .photo-cell.p2{grid-column:1/3;grid-row:auto;aspect-ratio:16/9;}
+  .photo-cell.p3{grid-column:1/2;grid-row:auto;aspect-ratio:3/4;}
+  .photo-cell.p4{grid-column:2/3;grid-row:auto;aspect-ratio:3/4;}
+  .registry-row{grid-template-columns:1fr;}
+  .dress-wrap{padding:32px 20px;}
+  .registry-body{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-text">
+    <span class="hero-eyebrow">🌸 Estás invitada</span>
+    <h1>Baby Shower<br>de <em>Valeria</em></h1>
+    <span class="hero-baby-name">Luna Sofía</span>
+    <div class="hero-subtitle">Ya viene en camino</div>
+
+    <div class="countdown" id="countdown">
+      <div class="cd-block"><span class="cd-num" id="cd-d">00</span><span class="cd-label">Días</span></div>
+      <div class="cd-block"><span class="cd-num" id="cd-h">00</span><span class="cd-label">Horas</span></div>
+      <div class="cd-block"><span class="cd-num" id="cd-m">00</span><span class="cd-label">Min</span></div>
+      <div class="cd-block"><span class="cd-num" id="cd-s">00</span><span class="cd-label">Seg</span></div>
+    </div>
+
+    <a href="#rsvp" class="btn-rsvp">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Confirmar asistencia
+    </a>
+  </div>
+
+  <div class="hero-photo">
+    <div class="hero-photo-frame">
+      <div class="hero-photo-ornament">🌸</div>
+      <img src="img/baby/Baby-1.png" alt="Valeria">
+      <div class="hero-photo-badge">
+        <span class="badge-date">28 Jun</span>
+        <span class="badge-label">2025 · 12:00 pm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETALLES -->
+<section id="detalles">
+  <div class="sec-inner">
+    <span class="sec-tag">✦ El evento</span>
+    <h2 class="sec-title">Fecha, hora y <em>lugar</em></h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <span class="detail-icon">📅</span>
+        <div class="detail-label">Fecha</div>
+        <div class="detail-val">Sábado<br>28 de junio</div>
+        <div class="detail-note">2025</div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon">🕛</span>
+        <div class="detail-label">Hora</div>
+        <div class="detail-val">12:00 pm</div>
+        <div class="detail-note">Puntual, por favor 🌸</div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon">📍</span>
+        <div class="detail-label">Lugar</div>
+        <div class="detail-val">Jardín Los Naranjos</div>
+        <div class="detail-note">Av. Vasconcelos 230,<br>San Pedro Garza García</div>
+        <a href="https://maps.google.com" class="btn-map" target="_blank">Ver en mapa →</a>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon">🍰</span>
+        <div class="detail-label">Habrá</div>
+        <div class="detail-val">Brunch &amp;<br>festejo</div>
+        <div class="detail-note">Pastel, juegos y mucho amor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="sec-inner">
+    <span class="sec-tag">✦ Mamá Valeria</span>
+    <h2 class="sec-title">Una mamá <em>radiante</em></h2>
+    <div class="rose-divider"><span>🌸</span></div>
+    <div class="photos-grid">
+      <div class="photo-cell p1">
+        <img src="img/baby/Baby-1.png" alt="Valeria con arreglo floral rosa">
+      </div>
+      <div class="photo-cell p2">
+        <img src="img/baby/Baby-2.png" alt="Valeria con flores de cerezo rosas">
+      </div>
+      <div class="photo-cell p3">
+        <img src="img/baby/Baby-3.png" alt="Valeria con vestido ivory y flores blancas">
+      </div>
+      <div class="photo-cell p4">
+        <img src="img/baby/Baby-4.png" alt="Valeria con candelabros dorados">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRESS CODE -->
+<section id="dresscode">
+  <div class="sec-inner">
+    <div class="dress-wrap">
+      <span class="sec-tag">✦ Dress code</span>
+      <h2 class="sec-title" style="margin-bottom:6px;">Tonos <em>rosas y pastel</em></h2>
+      <p class="dress-note" style="margin-top:4px;">Ven vestida en colores suaves que acompañen la celebración.</p>
+      <div class="dress-swatches">
+        <div class="swatch-group">
+          <div class="swatch" style="background:#F4B8C8;"></div>
+          <div class="swatch-name">Rosa bebé</div>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch" style="background:#E8C5CC;"></div>
+          <div class="swatch-name">Blush</div>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch" style="background:#C9A96E;"></div>
+          <div class="swatch-name">Dorado</div>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch" style="background:#D4C5B0;"></div>
+          <div class="swatch-name">Arena</div>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch" style="background:#C4B7D4;"></div>
+          <div class="swatch-name">Lavanda</div>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch" style="background:#F5F0E8;border:1px solid #e0d8cc;"></div>
+          <div class="swatch-name">Ivory</div>
+        </div>
+      </div>
+      <p class="dress-note">Por favor evita el <strong>blanco, negro y rojo</strong>. ¡Queremos un mar de pasteles! 🌸</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGALOS -->
+<section id="regalos">
+  <div class="sec-inner">
+    <span class="sec-tag">✦ Mesa de regalos</span>
+    <h2 class="sec-title">Si deseas <em>regalar</em></h2>
+    <div class="registry-wrap">
+      <div class="registry-header">
+        <span class="registry-header-icon">🎁</span>
+        <div>
+          <h3>Con mucho cariño</h3>
+          <p>Si deseas hacerle un regalo a Luna Sofía, aquí tienes las opciones</p>
+        </div>
+      </div>
+      <div class="registry-body">
+        <div class="registry-row">
+          <div class="reg-card">
+            <span class="reg-icon">🏬</span>
+            <div class="reg-name">Liverpool</div>
+            <div class="reg-detail">Mesa de regalos</div>
+            <div class="reg-num">N.º 52847193</div>
+            <div class="reg-detail" style="margin-top:6px;">Disponible en cualquier<br>sucursal de Liverpool</div>
+          </div>
+          <div class="reg-card">
+            <span class="reg-icon">🏦</span>
+            <div class="reg-name">Transferencia</div>
+            <div class="reg-detail">BBVA México<br>Valeria Hernández Treviño</div>
+            <div class="reg-num">012 580 0123 4567 89</div>
+          </div>
+        </div>
+        <p class="registry-note">💕 Tu presencia es el mejor regalo. Lo demás es completamente opcional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <div class="sec-inner" style="text-align:center;">
+    <span class="sec-tag">✦ Confirmación</span>
+    <h2 class="sec-title">¿Nos<br><em>acompañas?</em></h2>
+    <p class="rsvp-sub">Confirma tu asistencia antes del <strong style="color:#fff;">15 de junio</strong>.<br>¡Te esperamos con mucho amor! 🌸</p>
+    <a href="https://wa.me/521XXXXXXXXXX?text=Hola%21+Confirmo+mi+asistencia+al+baby+shower+de+Valeria" class="btn-wa" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Confirmar por WhatsApp
+    </a>
+    <p class="rsvp-deadline">Favor de confirmar antes del 15 de junio · Cupo limitado</p>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-script">Con amor, la familia Hernández Treviño</p>
+  <span>Diseño por Casa Vita BranSan · Monterrey, N.L.</span>
+</footer>
+
+<script>
+const eventDate = new Date('2025-06-28T12:00:00');
+function updateCountdown(){
+  const now = new Date();
+  const diff = eventDate - now;
+  if(diff <= 0){
+    document.getElementById('countdown').innerHTML='<p style="color:var(--rose);font-family:Playfair Display,serif;font-size:22px;font-style:italic;">¡Hoy es el gran día! 🌸</p>';
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>
