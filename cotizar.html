@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotiza tu página — Casa Vita BranSan</title>
+<meta name="description" content="Cuéntanos de tu evento y te mandamos tu cotización en minutos. Bodas, XV años, baby showers y más.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+
+:root{
+  --bg:      #FAF7F4;
+  --bg2:     #F3EDE6;
+  --dark:    #1E1208;
+  --dark2:   #3D2614;
+  --terra:   #B5603A;
+  --terra2:  #D4784E;
+  --gold:    #C4923A;
+  --cream:   #F8F2EC;
+  --border:  rgba(181,96,58,0.15);
+  --border2: rgba(181,96,58,0.3);
+  --muted:   rgba(61,38,20,0.45);
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+
+.page{position:relative;z-index:1;}
+
+/* ─── HEADER ─── */
+header{
+  padding:20px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  background:rgba(250,247,244,0.9);
+  backdrop-filter:blur(12px);
+  position:sticky;top:0;z-index:50;
+}
+.logo{
+  font-family:'Cormorant',serif;
+  font-size:17px;font-weight:400;font-style:italic;
+  color:var(--dark);letter-spacing:0.04em;
+}
+.logo span{color:var(--terra);}
+.header-back{
+  font-size:12px;font-weight:300;color:var(--muted);
+  text-decoration:none;letter-spacing:0.06em;transition:color .2s;
+}
+.header-back:hover{color:var(--terra);}
+@media(max-width:500px){header{padding:16px 20px;}}
+
+/* ─── MAIN — una columna centrada ─── */
+.main{
+  max-width:600px;
+  margin:0 auto;
+  padding:52px 24px 80px;
+}
+
+/* ─── INFO BANNER (arriba del form) ─── */
+.info-banner{
+  margin-bottom:40px;
+  padding:32px 36px;
+  background:linear-gradient(135deg,#F8F0E8 0%,#F0E4D4 100%);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.info-banner::after{
+  content:'C';
+  position:absolute;right:-10px;bottom:-30px;
+  font-family:'Cormorant',serif;
+  font-size:180px;font-weight:300;font-style:italic;
+  color:rgba(181,96,58,0.06);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.info-tag{
+  font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--terra);font-weight:500;
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:14px;
+}
+.info-tag::before{content:'';width:24px;height:1px;background:var(--terra);}
+.info-h1{
+  font-family:'Cormorant',serif;
+  font-size:clamp(28px,5vw,38px);font-weight:400;
+  line-height:1.1;color:var(--dark);margin-bottom:10px;
+}
+.info-h1 em{font-style:italic;color:var(--terra);}
+.info-desc{
+  font-size:14px;font-weight:300;line-height:1.7;
+  color:var(--muted);margin-bottom:20px;
+}
+
+/* Proof inline */
+.proof-inline{
+  display:flex;flex-direction:column;gap:8px;
+  margin-bottom:20px;
+}
+.proof-inline-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:300;color:var(--dark2);
+}
+.proof-inline-item::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--terra);flex-shrink:0;
+}
+.proof-inline-item strong{font-weight:500;color:var(--dark);}
+
+/* Price strip */
+.price-strip{
+  display:flex;gap:2px;flex-wrap:wrap;position:relative;z-index:1;
+}
+.price-chip{
+  border:1px solid var(--border2);padding:7px 12px;
+  font-size:11px;font-weight:300;color:var(--dark2);background:white;
+}
+.price-chip strong{
+  display:block;
+  font-family:'Cormorant',serif;
+  font-size:16px;font-weight:400;color:var(--terra);
+}
+
+/* ─── FORM CARD ─── */
+.form-card{
+  background:white;
+  border:1px solid var(--border);
+  padding:40px 36px 44px;
+}
+@media(max-width:500px){.form-card{padding:28px 20px 36px;}}
+
+.form-heading{
+  font-family:'Cormorant',serif;
+  font-size:clamp(24px,4vw,30px);font-weight:400;
+  color:var(--dark);margin-bottom:4px;
+}
+.form-sub{
+  font-size:13px;font-weight:300;color:var(--muted);
+  margin-bottom:28px;line-height:1.6;
+}
+
+/* Step dots */
+.step-dots{display:flex;gap:6px;margin-bottom:28px;}
+.step-dot{
+  height:3px;border-radius:2px;background:var(--bg2);
+  transition:background .3s,width .3s;width:28px;
+}
+.step-dot.active{background:var(--terra);width:44px;}
+.step-dot.done{background:var(--gold);}
+
+/* Steps */
+.form-step{display:none;}
+.form-step.active{display:block;animation:slideIn .25s ease;}
+@keyframes slideIn{
+  from{opacity:0;transform:translateX(10px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+.step-counter{
+  font-size:11px;letter-spacing:0.12em;color:var(--muted);
+  font-weight:300;margin-bottom:22px;
+}
+
+/* Fields */
+.field{margin-bottom:20px;}
+.field-label{
+  font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--terra);font-weight:500;display:block;margin-bottom:7px;
+}
+.field-hint{
+  font-size:12px;font-weight:300;color:var(--muted);
+  display:block;margin-bottom:7px;font-style:italic;
+}
+
+input[type=text],input[type=tel]{
+  width:100%;
+  border:1px solid var(--border2);
+  background:var(--bg);
+  color:var(--dark);
+  padding:13px 15px;
+  font-size:15px;font-weight:300;
+  font-family:'Outfit',sans-serif;
+  outline:none;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  -webkit-appearance:none;border-radius:0;
+}
+input:focus{
+  border-color:var(--terra);background:white;
+  box-shadow:0 0 0 3px rgba(181,96,58,0.07);
+}
+input::placeholder{color:rgba(61,38,20,0.25);font-style:italic;}
+input.error{border-color:#c0504a;box-shadow:0 0 0 3px rgba(192,80,74,0.08);}
+.error-msg{font-size:11px;color:#c0504a;margin-top:4px;display:none;}
+input.error ~ .error-msg{display:block;}
+
+/* Option cards */
+.option-grid{display:grid;gap:8px;}
+.option-grid.cols2{grid-template-columns:1fr 1fr;}
+.option-grid.cols1{grid-template-columns:1fr;}
+@media(max-width:440px){.option-grid.cols2{grid-template-columns:1fr;}}
+
+.opt-card{
+  border:1px solid var(--border2);padding:12px 14px;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,transform .15s;
+  display:flex;align-items:center;gap:10px;
+  user-select:none;background:var(--bg);
+}
+.opt-card:hover{border-color:var(--terra);background:rgba(181,96,58,0.03);transform:translateY(-1px);}
+.opt-card.selected{border-color:var(--terra);background:rgba(181,96,58,0.05);}
+.opt-radio{
+  width:15px;height:15px;border-radius:50%;
+  border:2px solid var(--border2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s;
+}
+.opt-card.selected .opt-radio{border-color:var(--terra);background:var(--terra);}
+.opt-card.selected .opt-radio::after{content:'';width:5px;height:5px;border-radius:50%;background:white;}
+.opt-icon{font-size:17px;flex-shrink:0;}
+.opt-label{font-size:14px;font-weight:300;color:var(--dark);}
+.opt-sub{font-size:11px;color:var(--muted);font-weight:300;margin-top:2px;}
+.opt-price{
+  font-family:'Cormorant',serif;
+  font-size:18px;font-weight:400;color:var(--terra);
+  flex-shrink:0;margin-left:auto;padding-left:10px;
+}
+
+/* Quote box */
+.quote-box{
+  margin-top:20px;
+  border:1px solid var(--terra);
+  background:rgba(181,96,58,0.04);
+  padding:20px 22px;
+  animation:fadeUp .25s ease;
+}
+.quote-label{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--terra);font-weight:500;margin-bottom:14px;
+}
+.quote-rows{display:flex;flex-direction:column;gap:0;}
+.quote-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid var(--border);
+  font-size:13px;font-weight:300;color:var(--dark2);
+}
+.quote-row span:last-child{font-weight:500;color:var(--dark);}
+.quote-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 0 10px;
+  font-size:15px;font-weight:500;color:var(--dark);
+}
+.quote-total span:last-child{
+  font-family:'Cormorant',serif;
+  font-size:28px;font-weight:400;color:var(--terra);
+}
+.quote-note{
+  font-size:11px;font-weight:300;color:var(--muted);
+  font-style:italic;
+}
+
+/* Nav buttons */
+.form-nav{display:flex;gap:10px;margin-top:28px;}
+.btn-prev{
+  border:1px solid var(--border2);background:transparent;
+  color:var(--dark2);padding:13px 20px;font-size:13px;font-weight:400;
+  cursor:pointer;font-family:'Outfit',sans-serif;letter-spacing:0.04em;
+  transition:border-color .2s;
+}
+.btn-prev:hover{border-color:var(--terra);}
+.btn-next,.btn-submit{
+  flex:1;background:var(--terra);color:white;border:none;
+  padding:13px 20px;font-size:14px;font-weight:500;
+  cursor:pointer;font-family:'Outfit',sans-serif;letter-spacing:0.05em;
+  transition:background .2s,transform .15s;
+}
+.btn-next:hover{background:var(--terra2);transform:translateY(-1px);}
+.btn-submit{
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-submit:hover{background:#d9a040;transform:translateY(-1px);}
+.btn-submit svg{width:17px;height:17px;fill:white;}
+
+/* ─── GRACIAS ─── */
+#thanksScreen{
+  display:none;
+  flex-direction:column;align-items:center;
+  text-align:center;padding:8px 0;
+  animation:fadeUp .4s ease;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.thanks-icon{
+  width:64px;height:64px;
+  background:rgba(181,96,58,0.08);
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin:0 auto 24px;
+  animation:popIn .35s ease .15s both;
+}
+@keyframes popIn{from{transform:scale(0.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+.thanks-h2{
+  font-family:'Cormorant',serif;
+  font-size:clamp(26px,4vw,34px);font-weight:400;
+  color:var(--dark);margin-bottom:8px;line-height:1.15;
+}
+.thanks-h2 em{font-style:italic;color:var(--terra);}
+.thanks-desc{
+  font-size:14px;font-weight:300;color:var(--muted);
+  max-width:320px;margin:0 auto 28px;line-height:1.8;
+}
+
+.thanks-summary{
+  background:var(--bg);border:1px solid var(--border);
+  padding:18px 22px;margin-bottom:24px;
+  text-align:left;width:100%;
+}
+.ts-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;
+}
+.ts-row:last-child{border-bottom:none;}
+.ts-key{font-weight:300;color:var(--muted);}
+.ts-val{font-weight:500;color:var(--dark);font-size:13px;text-align:right;max-width:200px;}
+
+.btn-wa{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--terra);color:white;text-decoration:none;
+  padding:15px 36px;font-size:14px;font-weight:500;
+  letter-spacing:0.05em;width:100%;
+  transition:background .2s,transform .15s;margin-bottom:14px;
+}
+.btn-wa:hover{background:var(--terra2);transform:translateY(-1px);}
+.btn-wa svg{width:19px;height:19px;fill:white;flex-shrink:0;}
+
+.thanks-note{
+  font-size:12px;font-weight:300;color:var(--muted);font-style:italic;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="logo">Casa Vita <span>BranSan</span></div>
+  <a href="index.html" class="header-back">← Ver ejemplos</a>
+</header>
+
+<div class="main">
+
+  <!-- INFO BANNER -->
+  <div class="info-banner">
+    <span class="info-tag">Cotización gratuita</span>
+    <h1 class="info-h1">Tu evento merece <em>una página que emocione</em></h1>
+    <p class="info-desc">Cuéntanos de tu evento en 2 minutos y te respondemos con tu cotización personalizada — sin compromiso.</p>
+    <div class="proof-inline">
+      <div class="proof-inline-item"><strong>Ves el diseño antes de pagar.</strong> Boceto completo con marca de agua.</div>
+      <div class="proof-inline-item"><strong>Hasta 3 cambios sin costo.</strong> Colores, textos y fotos.</div>
+      <div class="proof-inline-item"><strong>Entrega en 48–72 hrs.</strong> Express 24 hrs disponible.</div>
+      <div class="proof-inline-item"><strong>Respondemos en menos de 2 horas</strong> en horario hábil.</div>
+    </div>
+    <div class="price-strip">
+      <div class="price-chip"><strong>$250</strong>Básica</div>
+      <div class="price-chip"><strong>$350</strong>Video / GIF</div>
+      <div class="price-chip"><strong>$750</strong>Página web</div>
+      <div class="price-chip"><strong>$1,100</strong>Premium</div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="formCard">
+
+    <div id="formScreen">
+      <div class="form-heading">Cuéntanos de tu evento</div>
+      <div class="form-sub">Son solo 4 pasos rápidos — recibes tu cotización al instante 🎉</div>
+
+      <div class="step-dots">
+        <div class="step-dot active" id="dot0"></div>
+        <div class="step-dot" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="form-step active" id="step0">
+        <div class="step-counter">Paso 1 de 4 — Tus datos</div>
+        <div class="field">
+          <label class="field-label">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="¿Cómo te llamas?" autocomplete="name">
+          <div class="error-msg">Por favor escribe tu nombre</div>
+        </div>
+        <div class="field">
+          <label class="field-label">WhatsApp</label>
+          <span class="field-hint">Con este número te contactamos</span>
+          <input type="tel" id="whatsapp" placeholder="81 XXXX XXXX" autocomplete="tel">
+          <div class="error-msg">Por favor escribe tu número de WhatsApp</div>
+        </div>
+        <div class="form-nav">
+          <button class="btn-next" onclick="nextStep(0)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-step" id="step1">
+        <div class="step-counter">Paso 2 de 4 — Tu evento</div>
+        <div class="field">
+          <label class="field-label">¿Qué tipo de evento es?</label>
+          <div class="option-grid cols2" id="tipoGrid">
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">💍</div>
+              <div class="opt-label">Boda</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">👑</div>
+              <div class="opt-label">XV años</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">🌸</div>
+              <div class="opt-label">Baby Shower</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">🎓</div>
+              <div class="opt-label">Graduación</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">🎂</div>
+              <div class="opt-label">Cumpleaños</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'tipoGrid')">
+              <div class="opt-radio"></div>
+              <div class="opt-icon">✨</div>
+              <div class="opt-label">Otro</div>
+            </div>
+          </div>
+        </div>
+        <div class="field" style="margin-top:16px;">
+          <label class="field-label">Fecha aproximada del evento</label>
+          <span class="field-hint">No tiene que ser exacta</span>
+          <input type="text" id="fechaEvento" placeholder="Ej: Diciembre 2025 · Marzo 2026">
+        </div>
+        <div class="form-nav">
+          <button class="btn-prev" onclick="prevStep(1)">← Atrás</button>
+          <button class="btn-next" onclick="nextStep(1)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-step" id="step2">
+        <div class="step-counter">Paso 3 de 4 — ¿Qué tan pronto lo necesitas?</div>
+        <div class="field">
+          <label class="field-label">Urgencia</label>
+          <div class="option-grid cols1" id="urgenciaGrid">
+            <div class="opt-card" onclick="selectOpt(this,'urgenciaGrid')">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">⚡</div>
+              <div>
+                <div class="opt-label">Lo necesito urgente</div>
+                <div class="opt-sub">Esta semana o antes de 15 días</div>
+              </div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'urgenciaGrid')">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">📅</div>
+              <div>
+                <div class="opt-label">En el próximo mes</div>
+                <div class="opt-sub">Tengo tiempo, pero quiero empezar</div>
+              </div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'urgenciaGrid')">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">🔍</div>
+              <div>
+                <div class="opt-label">Solo estoy explorando</div>
+                <div class="opt-sub">Mi evento es en varios meses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-nav">
+          <button class="btn-prev" onclick="prevStep(2)">← Atrás</button>
+          <button class="btn-next" onclick="nextStep(2)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 — SERVICIO -->
+      <div class="form-step" id="step3">
+        <div class="step-counter">Paso 4 de 4 — Elige tu servicio</div>
+
+        <div class="field">
+          <label class="field-label">¿Qué tipo de diseño necesitas?</label>
+          <div class="option-grid cols1" id="servicioGrid">
+            <div class="opt-card" onclick="selectOpt(this,'servicioGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">💌</div>
+              <div style="flex:1;">
+                <div class="opt-label">Invitación digital básica</div>
+                <div class="opt-sub">Diseño elegante con datos del evento, animación y link</div>
+              </div>
+              <div class="opt-price">$250</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'servicioGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">🎬</div>
+              <div style="flex:1;">
+                <div class="opt-label">Invitación con video o GIF</div>
+                <div class="opt-sub">Animación o video incluido, más impacto para tus invitados</div>
+              </div>
+              <div class="opt-price">$350</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'servicioGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">🌐</div>
+              <div style="flex:1;">
+                <div class="opt-label">Página web de evento</div>
+                <div class="opt-sub">Fotos, countdown, detalles, itinerario, dress code y RSVP</div>
+              </div>
+              <div class="opt-price">$750</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'servicioGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:19px;flex-shrink:0;">👑</div>
+              <div style="flex:1;">
+                <div class="opt-label">Página premium (boda / XV años)</div>
+                <div class="opt-sub">Galería editorial, collage de fotos, animaciones y diseño de lujo</div>
+              </div>
+              <div class="opt-price">$1,100</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:4px;">
+          <label class="field-label">¿Necesitas servicio express?</label>
+          <div class="option-grid cols2" id="expressGrid">
+            <div class="opt-card" onclick="selectOpt(this,'expressGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:17px;flex-shrink:0;">🚀</div>
+              <div>
+                <div class="opt-label">Sí, en 24 hrs</div>
+                <div class="opt-sub" id="expressSub">Costo adicional</div>
+              </div>
+            </div>
+            <div class="opt-card selected" onclick="selectOpt(this,'expressGrid');calcPrice()">
+              <div class="opt-radio"></div>
+              <div style="font-size:17px;flex-shrink:0;">📦</div>
+              <div>
+                <div class="opt-label">No, entrega normal</div>
+                <div class="opt-sub">48–72 hrs sin costo extra</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cotización en vivo -->
+        <div class="quote-box" id="quoteBox" style="display:none;">
+          <div class="quote-label">Tu cotización</div>
+          <div class="quote-rows">
+            <div class="quote-row"><span id="qServicioNombre">—</span><span id="qServicioPrecio">—</span></div>
+            <div class="quote-row express-row" id="qExpressRow" style="display:none;">
+              <span>Express 24 hrs</span><span id="qExpressPrecio">—</span>
+            </div>
+          </div>
+          <div class="quote-total">
+            <span>Total</span>
+            <span id="qTotal">—</span>
+          </div>
+          <div class="quote-note">MXN · Pagas hasta aprobar el boceto 👁</div>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-prev" onclick="prevStep(3)">← Atrás</button>
+          <button class="btn-submit" onclick="submitForm()">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Ver mi cotización completa
+          </button>
+        </div>
+      </div>
+    </div><!-- /formScreen -->
+
+    <!-- GRACIAS -->
+    <div id="thanksScreen">
+      <div class="thanks-icon">🎉</div>
+      <div class="thanks-h2">¡Tu cotización, <em id="thanksNombre"></em>!</div>
+      <p class="thanks-desc">Esto es lo que necesitas para tu evento. Escríbenos y arrancamos con tu boceto sin compromiso.</p>
+
+      <div class="thanks-summary">
+        <div class="ts-row"><span class="ts-key">Evento</span><span class="ts-val" id="tsTipo">—</span></div>
+        <div class="ts-row"><span class="ts-key">Fecha aprox.</span><span class="ts-val" id="tsFecha">—</span></div>
+        <div class="ts-row"><span class="ts-key">Servicio</span><span class="ts-val" id="tsServicio">—</span></div>
+        <div class="ts-row" id="tsExpressRow" style="display:none;">
+          <span class="ts-key">Express 24 hrs</span><span class="ts-val" id="tsExpress">—</span>
+        </div>
+        <div class="ts-row" style="border-top:2px solid var(--border2);margin-top:4px;padding-top:12px;">
+          <span class="ts-key" style="font-weight:500;color:var(--dark);">Total estimado</span>
+          <span id="tsTotal" style="font-family:'Cormorant',serif;font-size:28px;font-weight:400;color:var(--terra);">—</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(181,96,58,0.05);border:1px solid var(--border);padding:14px 18px;margin-bottom:24px;width:100%;font-size:12px;font-weight:300;color:var(--dark2);line-height:1.8;">
+        ✅ <strong>Pagas hasta aprobar el boceto</strong> — ves el diseño completo primero<br>
+        ✅ <strong>Hasta 3 cambios sin costo</strong> incluidos<br>
+        ✅ Te contactamos en menos de 2 horas
+      </div>
+
+      <a id="btnWa" href="#" class="btn-wa" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Escríbenos ahora
+      </a>
+      <p class="thanks-note">También te contactaremos nosotros muy pronto 😊</p>
+    </div>
+
+  </div><!-- /form-card -->
+</div><!-- /main -->
+</div><!-- /page -->
+
+<script>
+// ─── Precios ───
+const PRECIOS = {
+  'Invitación digital básica':       { base: 250, express: 150 },
+  'Invitación con video o GIF':      { base: 350, express: 150 },
+  'Página web de evento':            { base: 750, express: 500 },
+  'Página premium (boda / XV años)': { base: 1100, express: 500 },
+};
+
+let currentStep = 0;
+const totalSteps = 4;
+
+function scrollToCard(){
+  const card = document.getElementById('formCard');
+  const headerH = document.querySelector('header').offsetHeight;
+  const cardTop = card.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+  if(card.getBoundingClientRect().top < headerH + 10){
+    window.scrollTo({top: cardTop, behavior:'smooth'});
+  }
+}
+
+function nextStep(from){
+  if(!validateStep(from)) return;
+  currentStep = from + 1;
+  showStep(currentStep);
+  updateDots();
+  scrollToCard();
+}
+function prevStep(from){
+  currentStep = from - 1;
+  showStep(currentStep);
+  updateDots();
+  scrollToCard();
+}
+function showStep(n){
+  document.querySelectorAll('.form-step').forEach((el,i)=>{
+    el.classList.toggle('active', i===n);
+  });
+}
+function updateDots(){
+  for(let i=0;i<totalSteps;i++){
+    const dot = document.getElementById('dot'+i);
+    dot.classList.remove('active','done');
+    if(i===currentStep) dot.classList.add('active');
+    else if(i<currentStep) dot.classList.add('done');
+  }
+}
+
+function validateStep(n){
+  if(n===0){
+    const nombre = document.getElementById('nombre');
+    const wa = document.getElementById('whatsapp');
+    let ok = true;
+    if(!nombre.value.trim()){nombre.classList.add('error');ok=false;}
+    else nombre.classList.remove('error');
+    if(!wa.value.trim()){wa.classList.add('error');ok=false;}
+    else wa.classList.remove('error');
+    return ok;
+  }
+  if(n===1){
+    if(!document.querySelector('#tipoGrid .opt-card.selected')){
+      alert('Por favor selecciona el tipo de evento');return false;
+    }
+    return true;
+  }
+  if(n===2){
+    if(!document.querySelector('#urgenciaGrid .opt-card.selected')){
+      alert('Por favor selecciona una opción de urgencia');return false;
+    }
+    return true;
+  }
+  if(n===3){
+    if(!document.querySelector('#servicioGrid .opt-card.selected')){
+      alert('Por favor selecciona el tipo de diseño');return false;
+    }
+    return true;
+  }
+  return true;
+}
+
+function selectOpt(el, gridId){
+  document.querySelectorAll('#'+gridId+' .opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ─── Cotización en vivo ───
+function calcPrice(){
+  const svcEl  = document.querySelector('#servicioGrid .opt-card.selected');
+  const expEl  = document.querySelector('#expressGrid .opt-card.selected');
+  if(!svcEl) return;
+
+  const svcName   = svcEl.querySelector('.opt-label').textContent;
+  const isExpress = expEl && expEl.querySelector('.opt-label').textContent.includes('24');
+  const precio    = PRECIOS[svcName];
+  if(!precio) return;
+
+  const expCost   = isExpress ? precio.express : 0;
+  const total     = precio.base + expCost;
+
+  // Actualizar sub de express
+  document.getElementById('expressSub').textContent = `+$${precio.express} adicional`;
+
+  // Mostrar quote box
+  const box = document.getElementById('quoteBox');
+  box.style.display = 'block';
+  document.getElementById('qServicioNombre').textContent = svcName;
+  document.getElementById('qServicioPrecio').textContent = `$${precio.base.toLocaleString()}`;
+  if(isExpress){
+    document.getElementById('qExpressRow').style.display='flex';
+    document.getElementById('qExpressPrecio').textContent = `+$${expCost.toLocaleString()}`;
+  } else {
+    document.getElementById('qExpressRow').style.display='none';
+  }
+  document.getElementById('qTotal').textContent = `$${total.toLocaleString()} MXN`;
+}
+
+// ─── Submit ───
+function submitForm(){
+  if(!validateStep(3)) return;
+
+  const nombre   = document.getElementById('nombre').value.trim();
+  const wa       = document.getElementById('whatsapp').value.trim();
+  const tipo     = document.querySelector('#tipoGrid .opt-card.selected')?.querySelector('.opt-label')?.textContent || '—';
+  const fecha    = document.getElementById('fechaEvento').value.trim() || 'No especificada';
+  const urgencia = document.querySelector('#urgenciaGrid .opt-card.selected')?.querySelector('.opt-label')?.textContent || '—';
+  const svcEl    = document.querySelector('#servicioGrid .opt-card.selected');
+  const expEl    = document.querySelector('#expressGrid .opt-card.selected');
+
+  const svcName   = svcEl?.querySelector('.opt-label')?.textContent || '—';
+  const isExpress = expEl && expEl.querySelector('.opt-label').textContent.includes('24');
+  const precio    = PRECIOS[svcName] || { base: 0, express: 0 };
+  const expCost   = isExpress ? precio.express : 0;
+  const total     = precio.base + expCost;
+
+  let temp = 'frío';
+  if(urgencia.includes('urgente')) temp = 'caliente 🔥';
+  else if(urgencia.includes('próximo')) temp = 'tibio ☀️';
+
+  // Llenar pantalla gracias
+  document.getElementById('thanksNombre').textContent = nombre.split(' ')[0];
+  document.getElementById('tsTipo').textContent       = tipo;
+  document.getElementById('tsFecha').textContent      = fecha;
+  document.getElementById('tsServicio').textContent   = svcName;
+  document.getElementById('tsTotal').textContent      = `$${total.toLocaleString()} MXN`;
+
+  if(isExpress){
+    document.getElementById('tsExpressRow').style.display = 'flex';
+    document.getElementById('tsExpress').textContent = `+$${expCost.toLocaleString()}`;
+  }
+
+  // WhatsApp con mensaje prellenado
+  const expressTxt = isExpress ? `\n• Express 24 hrs: +$${expCost.toLocaleString()}` : '';
+  const msg = encodeURIComponent(
+    `Hola! 👋 Llené el formulario en Casa Vita BranSan.\n\n` +
+    `📋 *Mis datos:*\n` +
+    `• Nombre: ${nombre}\n` +
+    `• WhatsApp: ${wa}\n` +
+    `• Evento: ${tipo}\n` +
+    `• Fecha: ${fecha}\n` +
+    `• Urgencia: ${urgencia}\n\n` +
+    `💰 *Cotización seleccionada:*\n` +
+    `• Servicio: ${svcName} — $${precio.base.toLocaleString()}${expressTxt}\n` +
+    `• *Total: $${total.toLocaleString()} MXN*\n\n` +
+    `¿Me pueden confirmar disponibilidad? 😊`
+  );
+  document.getElementById('btnWa').href = `https://wa.me/528126643281?text=${msg}`;
+
+  // ─── Webhook Make.com ───
+  const MAKE_WEBHOOK = 'https://hook.us2.make.com/7wjgq2um7hiyebzb9a5d64cjgaa3viwj';
+  const leadData = {
+    fecha:     new Date().toLocaleString('es-MX', {timeZone:'America/Monterrey'}),
+    nombre:    nombre,
+    whatsapp:  wa,
+    tipo:      tipo,
+    fuente:    document.referrer ? 'Facebook Ads' : 'Directo',
+    estado:    'Nuevo',
+    temperatura: temp,
+    seguimiento: urgencia
+  };
+  if(MAKE_WEBHOOK !== 'PEGAR_URL_WEBHOOK_AQUI'){
+    fetch(MAKE_WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(leadData)
+    }).catch(()=>{}); // silencioso — no bloquea el flujo si falla
+  }
+
+  // Mostrar gracias
+  document.getElementById('formScreen').style.display = 'none';
+  document.getElementById('thanksScreen').style.display = 'flex';
+
+  const card = document.getElementById('formCard');
+  const headerH = document.querySelector('header').offsetHeight;
+  window.scrollTo({top: card.offsetTop - headerH - 16, behavior:'smooth'});
+}
+
+document.getElementById('nombre').addEventListener('input',function(){this.classList.remove('error');});
+document.getElementById('whatsapp').addEventListener('input',function(){
+  this.classList.remove('error');
+  this.value = this.value.replace(/[^\d\s\-\+]/g,'');
+});
+</script>
+</body>
+</html>

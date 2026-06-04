@@ -499,6 +499,15 @@ footer p{
 }
 .fb-link:hover{color:var(--sand);}
 .fb-link svg{width:14px;height:14px;fill:currentColor;flex-shrink:0;}
+.nav-cotizar{
+  display:inline-flex;align-items:center;
+  background:var(--terracota);color:white;
+  font-size:12px;font-weight:600;letter-spacing:0.06em;
+  padding:8px 16px;border-radius:6px;
+  text-decoration:none;white-space:nowrap;
+  transition:background .2s,transform .2s;
+}
+.nav-cotizar:hover{background:var(--terra-deep);transform:translateY(-1px);}
 .nav-fb{
   display:inline-flex;align-items:center;gap:6px;
   color:var(--dark-mid);font-size:12px;font-weight:300;
@@ -514,6 +523,7 @@ footer p{
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Casa Vita <span>BranSan</span></div>
+  <a href="cotizar.html" class="nav-cotizar">Cotizar gratis →</a>
   <a href="https://www.facebook.com/share/1EkSXpLnUo/" class="nav-fb" target="_blank">
     <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
     Facebook
@@ -536,9 +546,9 @@ footer p{
       Creamos invitaciones digitales y páginas web de eventos que sorprenden. Bodas, XV años, baby showers, graduaciones y más.
     </p>
     <div class="hero-cta-group fade-up fade-up-4">
-      <a href="https://wa.me/528126643281?text=Hola%21%20Me%20interesa%20una%20invitaci%C3%B3n%20o%20p%C3%A1gina%20web%20para%20mi%20evento%20%F0%9F%8E%89" class="btn-primary" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Escríbenos por WhatsApp
+      <a href="cotizar.html" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M9 11H7a1 1 0 000 2h2a1 1 0 000-2zm0-4H7a1 1 0 000 2h2a1 1 0 000-2zm8 8H7a1 1 0 000 2h10a1 1 0 000-2zm0-4h-4a1 1 0 000 2h4a1 1 0 000-2zm2-9H5a3 3 0 00-3 3v14a3 3 0 003 3h14a3 3 0 003-3V5a3 3 0 00-3-3zm1 17a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1h14a1 1 0 011 1v14z"/></svg>
+        Cotiza gratis tu evento
       </a>
       <a href="#ejemplos" class="btn-secondary">Ver ejemplos reales →</a>
     </div>
@@ -595,7 +605,7 @@ footer p{
     <div class="svc-card">
       <span class="svc-icon">👑</span>
       <div class="svc-name">Página Premium</div>
-      <div class="svc-desc">Para bodas y XV años. Galería editorial, collage de fotos, animaciones y diseño de lujo.</div>
+      <div class="svc-desc">Para bodas y XV años. Galería editorial, collag de fotos, animaciones y diseño de lujo.</div>
       <div class="svc-price">$1,100 <span>MXN</span></div>
       <div class="svc-express">+ $500 servicio express 24 hrs</div>
     </div>
@@ -754,7 +764,10 @@ footer p{
     </div>
   </div>
 
-  <a href="https://wa.me/528126643281?text=Hola%21%20Me%20interesa%20una%20invitaci%C3%B3n%20o%20p%C3%A1gina%20web%20para%20mi%20evento%20%F0%9F%8E%89" class="btn-wa-big" target="_blank">
+  <a href="cotizar.html" class="btn-wa-big">
+    <svg viewBox="0 0 24 24"><path d="M9 11H7a1 1 0 000 2h2a1 1 0 000-2zm0-4H7a1 1 0 000 2h2a1 1 0 000-2zm8 8H7a1 1 0 000 2h10a1 1 0 000-2zm0-4h-4a1 1 0 000 2h4a1 1 0 000-2zm2-9H5a3 3 0 00-3 3v14a3 3 0 003 3h14a3 3 0 003-3V5a3 3 0 00-3-3zm1 17a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1h14a1 1 0 011 1v14z"/></svg>
+    Cotiza gratis tu evento
+  </a>
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.535 5.861L.057 23.082a.5.5 0 00.616.629l5.451-1.426A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.98 0-3.855-.572-5.44-1.573l-.363-.224-3.797.994.996-3.705-.237-.384A9.966 9.966 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
     Escribir por WhatsApp
   </a>
