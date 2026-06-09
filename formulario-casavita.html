@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de contenido — Casa Vita BranSan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra:   #B5603A;
+    --terra2:  #8F4427;
+    --gold:    #C8973F;
+    --cream:   #FAF6F1;
+    --cream2:  #F2EBE2;
+    --ink:     #2C1A0E;
+    --ink2:    #5C3A1E;
+    --border:  #E0D0C0;
+    --shadow:  rgba(44,26,14,.07);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2.5rem 1rem 4rem;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .logo-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .logo-mark::before, .logo-mark::after {
+    content: '';
+    height: 1px;
+    width: 48px;
+    background: linear-gradient(90deg, transparent, var(--terra));
+  }
+  .logo-mark::after { background: linear-gradient(90deg, var(--terra), transparent); }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: .75rem;
+  }
+  .header h1 em { font-style: italic; color: var(--terra); }
+  .header p {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    max-width: 680px;
+    margin: 0 auto 2rem;
+    display: flex;
+    gap: 6px;
+  }
+  .prog-step {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 99px;
+    transition: background .4s;
+    cursor: pointer;
+  }
+  .prog-step.done { background: var(--terra); }
+  .prog-step.active { background: var(--gold); }
+
+  /* ── CARD ── */
+  .card {
+    max-width: 680px;
+    margin: 0 auto 1rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px var(--shadow);
+  }
+  .card-section {
+    display: none;
+    padding: 2rem 2.5rem 2.5rem;
+    animation: fadeUp .3s ease;
+  }
+  .card-section.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--terra);
+    background: rgba(181,96,58,.08);
+    border: 1px solid rgba(181,96,58,.2);
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: .25rem;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--ink2);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  /* ── FIELDS ── */
+  .field { margin-bottom: 1.4rem; }
+  .field-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    margin-bottom: 7px;
+  }
+  .req { color: var(--terra); margin-left: 2px; }
+  input[type=text], input[type=tel], textarea, select {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    appearance: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--terra);
+    box-shadow: 0 0 0 3px rgba(181,96,58,.1);
+    background: white;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(44,26,14,.3); font-style: italic; }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B5603A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  select option { font-style: normal; }
+  .field-note {
+    font-size: 12px;
+    color: rgba(44,26,14,.4);
+    margin-top: 5px;
+    font-style: italic;
+  }
+  .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media(max-width: 540px) { .field-group { grid-template-columns: 1fr; } }
+
+  /* ── CHECKBOXES ── */
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media(max-width: 480px) { .check-grid { grid-template-columns: 1fr; } }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--terra); background: rgba(181,96,58,.03); }
+  .check-item input[type=checkbox] { display: none; }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all .2s;
+    font-size: 11px;
+    color: white;
+  }
+  .check-item.checked { border-color: var(--terra); background: rgba(181,96,58,.06); }
+  .check-item.checked .check-box { background: var(--terra); border-color: var(--terra); }
+  .check-label { font-size: 13px; line-height: 1.3; }
+
+  /* ── RADIO CARDS ── */
+  .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media(max-width: 480px) { .radio-grid { grid-template-columns: 1fr; } }
+  .radio-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+    position: relative;
+  }
+  .radio-card:hover { border-color: var(--terra); background: rgba(181,96,58,.03); }
+  .radio-card.selected { border-color: var(--terra); background: rgba(181,96,58,.06); }
+  .radio-card input { display: none; }
+  .radio-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .radio-sub { font-size: 11px; color: var(--ink2); line-height: 1.4; }
+  .radio-dot {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    border-radius: 99px;
+    border: 1.5px solid var(--border);
+    transition: all .2s;
+  }
+  .radio-card.selected .radio-dot { background: var(--terra); border-color: var(--terra); }
+
+  /* ── NAV ── */
+  .card-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--cream2);
+  }
+  .step-counter { font-size: 12px; color: var(--ink2); letter-spacing: .06em; }
+  .nav-btns { display: flex; gap: 10px; }
+  .btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-back {
+    background: transparent;
+    color: var(--ink2);
+    border: 1px solid var(--border);
+  }
+  .btn-back:hover { border-color: var(--terra); color: var(--terra); }
+  .btn-next {
+    background: var(--terra);
+    color: white;
+  }
+  .btn-next:hover { background: var(--terra2); transform: translateY(-1px); }
+  .btn-submit {
+    background: var(--gold);
+    color: white;
+  }
+  .btn-submit:hover { background: #a87a30; transform: translateY(-1px); }
+
+  /* ── THANKS ── */
+  .thanks {
+    display: none;
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 32px var(--shadow);
+  }
+  .thanks.active { display: block; animation: fadeUp .4s ease; }
+  .thanks-icon { font-size: 48px; margin-bottom: 1rem; }
+  .thanks h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: .75rem;
+    color: var(--ink);
+  }
+  .thanks h2 em { color: var(--terra); font-style: italic; }
+  .thanks p { font-size: 14px; color: var(--ink2); line-height: 1.7; max-width: 420px; margin: 0 auto; }
+
+  /* ── ERROR ── */
+  input.error, textarea.error, select.error { border-color: #C0504A; box-shadow: 0 0 0 3px rgba(192,80,74,.08); }
+  .error-msg { font-size: 12px; color: #C0504A; margin-top: 5px; display: none; }
+  .field.has-error .error-msg { display: block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-mark">Casa Vita BranSan</div>
+  <h1>Cuéntanos de <em>tu evento</em></h1>
+  <p>Son 5 pasos rápidos — con esta información creamos tu página exactamente como la imaginas.</p>
+</div>
+
+<!-- Progress -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="prog-step active" data-step="1"></div>
+  <div class="prog-step" data-step="2"></div>
+  <div class="prog-step" data-step="3"></div>
+  <div class="prog-step" data-step="4"></div>
+  <div class="prog-step" data-step="5"></div>
+</div>
+
+<!-- CARD -->
+<div class="card" id="mainCard">
+
+  <!-- STEP 1 — Datos del evento -->
+  <div class="card-section active" id="step1">
+    <div class="section-badge">01 de 05</div>
+    <div class="section-title">Datos del evento</div>
+    <div class="section-sub">La información base que aparecerá en tu página.</div>
+
+    <div class="field" id="f-tipo">
+      <label class="field-label">Tipo de evento <span class="req">*</span></label>
+      <select id="tipoEvento">
+        <option value="">Selecciona una opción…</option>
+        <option>Boda</option>
+        <option>XV años</option>
+        <option>Baby Shower</option>
+        <option>Graduación</option>
+        <option>Cumpleaños</option>
+        <option>Otro</option>
+      </select>
+      <div class="error-msg">Por favor selecciona el tipo de evento</div>
+    </div>
+
+    <div class="field" id="f-nombres">
+      <label class="field-label">Nombre(s) en la página <span class="req">*</span></label>
+      <input type="text" id="nombres" placeholder="Ej: Ana & Diego · Isabela · Valeria">
+      <div class="error-msg">Este campo es requerido</div>
+    </div>
+
+    <div class="field" id="f-fecha">
+      <label class="field-label">Fecha del evento <span class="req">*</span></label>
+      <input type="text" id="fechaEvento" placeholder="Ej: Sábado 15 de noviembre de 2025">
+      <div class="error-msg">Este campo es requerido</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Lugar 1 — Ceremonia / Misa</label>
+      <input type="text" id="lugar1Nombre" placeholder="Nombre del lugar" style="margin-bottom:8px">
+      <input type="text" id="lugar1Dir" placeholder="Dirección completa" style="margin-bottom:8px">
+      <input type="text" id="lugar1Hora" placeholder="Hora (ej: 5:00 pm)">
+      <div class="field-note">Déjalo vacío si no aplica</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Lugar 2 — Recepción / Salón <span class="req">*</span></label>
+      <input type="text" id="lugar2Nombre" placeholder="Nombre del lugar" style="margin-bottom:8px">
+      <input type="text" id="lugar2Dir" placeholder="Dirección completa" style="margin-bottom:8px">
+      <input type="text" id="lugar2Hora" placeholder="Hora (ej: 7:30 pm)">
+    </div>
+  </div>
+
+  <!-- STEP 2 — Estilo -->
+  <div class="card-section" id="step2">
+    <div class="section-badge">02 de 05</div>
+    <div class="section-title">Estilo y colores</div>
+    <div class="section-sub">Elige el ambiente que quieres para tu página. Puedes elegir uno o describirlo con tus propias palabras.</div>
+
+    <div class="field">
+      <label class="field-label">Ambiente general <span class="req">*</span></label>
+      <div class="radio-grid" id="ambienceGrid">
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Elegante oscuro">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Elegante oscuro</div>
+          <div class="radio-sub">Fondos profundos, detalles dorados</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Romántico claro">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Romántico claro</div>
+          <div class="radio-sub">Crema, rosas y blush, flores</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Rústico / ranch">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Rústico / ranch</div>
+          <div class="radio-sub">Tonos tierra, terracota, ámbar</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Moderno minimalista">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Moderno minimalista</div>
+          <div class="radio-sub">Blanco, negro, tipografía limpia</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Rose gold y champagne">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Rose gold y champagne</div>
+          <div class="radio-sub">Dorado rosado, melocotón, champagne</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'ambience')">
+          <input type="radio" name="ambience" value="Floral y pastel">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Floral y pastel</div>
+          <div class="radio-sub">Colores suaves, primavera</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">O descríbelo con tus palabras</label>
+      <input type="text" id="ambienteCustom" placeholder="Ej: Quiero algo muy cinematográfico, oscuro con detalles dorados…">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Colores exactos de tu evento</label>
+      <input type="text" id="coloresCliente" placeholder="Ej: Rosa gold, champagne, café oscuro">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Inspiración visual</label>
+      <input type="text" id="referenciaVisual" placeholder="Link de Pinterest, página que te gustó, etc.">
+      <div class="field-note">También puedes mandarnos fotos por WhatsApp después de enviar</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Notas adicionales de estilo</label>
+      <textarea id="notasEstilo" placeholder="Ej: Me gustaría que se sienta muy elegante, con mucha presencia. El color principal es el vino…"></textarea>
+    </div>
+  </div>
+
+  <!-- STEP 3 — Secciones -->
+  <div class="card-section" id="step3">
+    <div class="section-badge">03 de 05</div>
+    <div class="section-title">Secciones de tu página</div>
+    <div class="section-sub">Selecciona todo lo que quieres que aparezca. Puedes elegir varias opciones.</div>
+
+    <div class="field">
+      <label class="field-label">¿Qué incluimos? <span class="req">*</span></label>
+      <div class="check-grid" id="seccionesGrid">
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Hero + countdown">
+          <div class="check-box">✓</div>
+          <div class="check-label">Hero + countdown</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Galería de fotos">
+          <div class="check-box">✓</div>
+          <div class="check-label">Galería de fotos</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Detalles del evento">
+          <div class="check-box">✓</div>
+          <div class="check-label">Detalles del evento</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Itinerario">
+          <div class="check-box">✓</div>
+          <div class="check-label">Itinerario de la noche</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Dress code">
+          <div class="check-box">✓</div>
+          <div class="check-label">Dress code</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Mesa de regalos">
+          <div class="check-box">✓</div>
+          <div class="check-label">Mesa de regalos</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="RSVP WhatsApp">
+          <div class="check-box">✓</div>
+          <div class="check-label">RSVP por WhatsApp</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Mensaje de papás">
+          <div class="check-box">✓</div>
+          <div class="check-label">Mensaje de papás</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Historia de la pareja">
+          <div class="check-box">✓</div>
+          <div class="check-label">Historia de la pareja</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox" value="Música de fondo">
+          <div class="check-box">✓</div>
+          <div class="check-label">Música de fondo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Sección especial adicional</label>
+      <input type="text" id="seccionExtra" placeholder="Ej: Confirmación de hotel, Datos de vuelo para foráneos…">
+    </div>
+  </div>
+
+  <!-- STEP 4 — Contenido -->
+  <div class="card-section" id="step4">
+    <div class="section-badge">04 de 05</div>
+    <div class="section-title">Contenido de tu página</div>
+    <div class="section-sub">Si prefieres que redactemos algo por ti, escribe <em>REDACTAR</em> en el campo correspondiente.</div>
+
+    <div class="field">
+      <label class="field-label">Mensaje o dedicatoria principal</label>
+      <textarea id="mensaje" placeholder="Ej: Hoy miramos atrás y no podemos creer el camino que hemos recorrido… — o escribe REDACTAR"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Itinerario de la noche</label>
+      <textarea id="itinerario" rows="6" placeholder="5:00 pm · Misa&#10;7:30 pm · Recepción de invitados&#10;8:30 pm · Entrada&#10;9:00 pm · Cena y brindis&#10;10:00 pm · Baile sorpresa&#10;10:30 pm · Pista abierta"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Dress Code</label>
+      <input type="text" id="dresscode" placeholder="Ej: Formal elegante · Rose gold y champagne · Evitar blanco">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Mesa de regalos — Tienda</label>
+      <div class="field-group">
+        <input type="text" id="regalosNombre" placeholder="Tienda (ej: Liverpool)">
+        <input type="text" id="regalosNum" placeholder="Número de mesa">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Mesa de regalos — Transferencia</label>
+      <div class="field-group">
+        <input type="text" id="regalosClabe" placeholder="CLABE o número de cuenta">
+        <input type="text" id="regalosBank" placeholder="Banco (ej: BBVA)">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">RSVP — WhatsApp para confirmaciones</label>
+      <input type="tel" id="rsvpWa" placeholder="52 81 XXXX XXXX">
+    </div>
+
+    <div class="field">
+      <label class="field-label">RSVP — Fecha límite para confirmar</label>
+      <input type="text" id="rsvpFecha" placeholder="Ej: 7 de junio de 2025">
+    </div>
+  </div>
+
+  <!-- STEP 5 — Fotos -->
+  <div class="card-section" id="step5">
+    <div class="section-badge">05 de 05</div>
+    <div class="section-title">Fotos para tu página</div>
+    <div class="section-sub">Las imágenes hacen toda la diferencia. Cuéntanos qué tienes disponible.</div>
+
+    <div class="field">
+      <label class="field-label">¿Cómo nos mandas tus fotos? <span class="req">*</span></label>
+      <div class="radio-grid" id="fotosGrid" style="grid-template-columns:1fr;">
+        <div class="radio-card" onclick="selectRadio(this,'fotos')">
+          <input type="radio" name="fotos" value="WhatsApp">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Las mando por WhatsApp</div>
+          <div class="radio-sub">Después de enviar este formulario</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'fotos')">
+          <input type="radio" name="fotos" value="Google Drive">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Las mando por Google Drive</div>
+          <div class="radio-sub">Comparto el link por WhatsApp</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'fotos')">
+          <input type="radio" name="fotos" value="Todavía no las tengo">
+          <div class="radio-dot"></div>
+          <div class="radio-title">Todavía no las tengo</div>
+          <div class="radio-sub">Las mando después — ¡sin problema!</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this,'fotos')">
+          <input type="radio" name="fotos" value="Sin fotos propias">
+          <div class="radio-dot"></div>
+          <div class="radio-title">No tengo fotos propias</div>
+          <div class="radio-sub">¿Pueden usar imágenes de muestra?</div>
+        </div>
+      </div>
+      <div class="field-note" style="margin-top:10px">Recomendamos mínimo 4 fotos · horizontales · buena iluminación ✨</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">¿Algo más que quieras contarnos?</label>
+      <textarea id="notasFinales" placeholder="Cualquier detalle especial, petición o duda que tengas…"></textarea>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="card-nav">
+    <span class="step-counter" id="stepCounter">Paso 1 de 5</span>
+    <div class="nav-btns">
+      <button class="btn btn-back" id="btnBack" onclick="goBack()" style="display:none">← Atrás</button>
+      <button class="btn btn-next" id="btnNext" onclick="goNext()">Siguiente →</button>
+      <button class="btn btn-submit" id="btnSubmit" onclick="submitForm()" style="display:none">Enviar formulario ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- THANKS -->
+<div class="thanks" id="thanksScreen">
+  <div class="thanks-icon">🌸</div>
+  <h2>¡Recibimos tu <em>información!</em></h2>
+  <p>En cuanto revisemos todo te mandamos un mensaje por WhatsApp con los próximos pasos y una vista previa en 48–72 hrs.</p>
+</div>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  function updateUI() {
+    document.querySelectorAll('.card-section').forEach((s,i) => {
+      s.classList.toggle('active', i+1 === currentStep);
+    });
+    document.querySelectorAll('.prog-step').forEach((s,i) => {
+      s.classList.remove('done','active');
+      if(i+1 < currentStep) s.classList.add('done');
+      if(i+1 === currentStep) s.classList.add('active');
+    });
+    document.getElementById('stepCounter').textContent = `Paso ${currentStep} de ${totalSteps}`;
+    document.getElementById('btnBack').style.display = currentStep > 1 ? 'inline-flex' : 'none';
+    document.getElementById('btnNext').style.display = currentStep < totalSteps ? 'inline-flex' : 'none';
+    document.getElementById('btnSubmit').style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
+    document.getElementById('mainCard').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function validateStep(step) {
+    let ok = true;
+    const required = {
+      1: [
+        {id:'tipoEvento', fid:'f-tipo', tag:'select'},
+        {id:'nombres', fid:'f-nombres', tag:'input'},
+        {id:'fechaEvento', fid:'f-fecha', tag:'input'},
+      ]
+    };
+    if(required[step]) {
+      required[step].forEach(f => {
+        const el = document.getElementById(f.id);
+        const field = document.getElementById(f.fid);
+        if(!el.value.trim()) {
+          field.classList.add('has-error');
+          el.classList.add('error');
+          ok = false;
+        } else {
+          field.classList.remove('has-error');
+          el.classList.remove('error');
+        }
+      });
+    }
+    return ok;
+  }
+
+  function goNext() {
+    if(!validateStep(currentStep)) return;
+    if(currentStep < totalSteps) { currentStep++; updateUI(); }
+  }
+
+  function goBack() {
+    if(currentStep > 1) { currentStep--; updateUI(); }
+  }
+
+  function selectRadio(el, name) {
+    document.querySelectorAll(`input[name=${name}]`).forEach(r => {
+      r.closest('.radio-card').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('input[type=radio]').checked = true;
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    el.querySelector('input[type=checkbox]').checked = el.classList.contains('checked');
+  }
+
+  function submitForm() {
+    document.getElementById('mainCard').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('thanksScreen').classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
