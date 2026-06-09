@@ -693,6 +693,47 @@
   }
 
   function submitForm() {
+
+    const MAKE_WEBHOOK = 'https://hook.us2.make.com/5nuwfh826a225wl4qde4owh8zv7vrbk6';
+
+    const getSecciones = () => [...document.querySelectorAll('#seccionesGrid .check-item.checked')]
+      .map(el => el.querySelector('.check-label').textContent).join(', ') || '—';
+
+    const getRadio = (name) => {
+      const el = document.querySelector(`input[name=${name}]:checked`);
+      return el ? el.value : '—';
+    };
+
+    const clienteData = {
+      fecha:           new Date().toLocaleString('es-MX', {timeZone:'America/Monterrey'}),
+      tipo_evento:     document.getElementById('tipoEvento').value || '—',
+      nombres:         document.getElementById('nombres').value.trim() || '—',
+      fecha_evento:    document.getElementById('fechaEvento').value.trim() || '—',
+      lugar1:          [document.getElementById('lugar1Nombre').value, document.getElementById('lugar1Dir').value, document.getElementById('lugar1Hora').value].filter(Boolean).join(' · ') || '—',
+      lugar2:          [document.getElementById('lugar2Nombre').value, document.getElementById('lugar2Dir').value, document.getElementById('lugar2Hora').value].filter(Boolean).join(' · ') || '—',
+      estilo:          getRadio('ambience') !== '—' ? getRadio('ambience') : (document.getElementById('ambienteCustom').value.trim() || '—'),
+      colores:         document.getElementById('coloresCliente').value.trim() || '—',
+      referencia:      document.getElementById('referenciaVisual').value.trim() || '—',
+      notas_estilo:    document.getElementById('notasEstilo').value.trim() || '—',
+      secciones:       getSecciones(),
+      seccion_extra:   document.getElementById('seccionExtra').value.trim() || '—',
+      mensaje:         document.getElementById('mensaje').value.trim() || '—',
+      itinerario:      document.getElementById('itinerario').value.trim() || '—',
+      dresscode:       document.getElementById('dresscode').value.trim() || '—',
+      regalos_tienda:  [document.getElementById('regalosNombre').value, document.getElementById('regalosNum').value].filter(Boolean).join(' · ') || '—',
+      regalos_cuenta:  [document.getElementById('regalosClabe').value, document.getElementById('regalosBank').value].filter(Boolean).join(' · ') || '—',
+      rsvp_wa:         document.getElementById('rsvpWa').value.trim() || '—',
+      rsvp_fecha:      document.getElementById('rsvpFecha').value.trim() || '—',
+      fotos:           getRadio('fotos'),
+      notas_finales:   document.getElementById('notasFinales').value.trim() || '—',
+    };
+
+    fetch(MAKE_WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(clienteData)
+    }).catch(() => {});
+
     document.getElementById('mainCard').style.display = 'none';
     document.getElementById('progressWrap').style.display = 'none';
     document.getElementById('thanksScreen').classList.add('active');
